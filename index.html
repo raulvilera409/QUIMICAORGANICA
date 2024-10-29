@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade Avaliativa - Química Orgânica</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212; /* Fundo escuro */
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+        }
+        .form-container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #1e1e1e; /* Fundo ligeiramente mais claro */
+            border-radius: 10px;
+        }
+        /* Cabeçalho da Escola */
+        .school-header {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .school-header h2 {
+            margin: 0;
+            font-size: 24px;
+            color: #FFD700; /* Cor dourada para destacar */
+        }
+        /* Cabeçalho da Atividade */
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 28px;
+            color: #ffffff;
+        }
+        /* Campos de Seleção e Data */
+        .cabecalho {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        .cabecalho div {
+            flex: 1 1 30%;
+            min-width: 200px;
+            margin: 10px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        select, input[type="date"] {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            font-size: 16px;
+        }
+        /* Questões */
+        .questao {
+            background-color: #2c2c2c; /* Fundo cinza escuro */
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            position: relative;
+            overflow: hidden; /* Para garantir que o cronômetro não ultrapasse os limites */
+        }
+        .questao-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .questao-header h3 {
+            margin: 0;
+            color: #f0f0f0;
+            flex: 1; /* Permite que o título ocupe o espaço disponível */
+            padding-right: 10px; /* Espaço para o cronômetro */
+        }
+        .relogio {
+            width: 80px;
+            height: 30px;
+            background-color: #ffffff;
+            color: #000000;
+            border-radius: 5px;
+            text-align: center;
+            line-height: 30px;
+            font-weight: bold;
+            font-size: 14px;
+            box-shadow: 0 0 5px rgba(0,0,0,0.3);
+            flex-shrink: 0; /* Evita que o cronômetro encolha */
+        }
+        .questao textarea {
+            width: 100%;
+            height: 150px;
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            resize: vertical;
+            font-size: 16px;
+            font-family: Arial, sans-serif;
+            background-color: #ffffff;
+            color: #000000;
+        }
+        /* Botão de Envio */
+        .submit-button {
+            display: block;
+            width: 200px;
+            margin: 30px auto;
+            padding: 15px;
+            font-size: 18px;
+            background-color: #4CAF50;
+            color: #ffffff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .submit-button:hover {
+            background-color: #45a049;
+        }
+        /* Feedback */
+        .feedback-container {
+            background-color: #ffffff;
+            color: #333333;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            display: none; /* Inicialmente escondido */
+        }
+        .feedback-container h2 {
+            margin-top: 0;
+        }
+        .feedback-questao {
+            margin-bottom: 15px;
+        }
+        .feedback-questao.correct {
+            color: green;
+        }
+        .feedback-questao.incorrect {
+            color: red;
+        }
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .cabecalho {
+                flex-direction: column;
+            }
+            .cabecalho div {
+                margin: 10px 0;
+            }
+            .questao-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .relogio {
+                margin-top: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="form-container">
+        <!-- Cabeçalho da Escola -->
+        <div class="school-header">
+            <h2>E.E.MARIA LEONI</h2>
+        </div>
+
+        <!-- Cabeçalho da Atividade -->
+        <div class="header">
+            <h1>Atividade Avaliativa - Química Orgânica</h1>
+        </div>
+
+        <!-- Campos de Seleção e Data -->
+        <div class="cabecalho">
+            <div>
+                <label for="nome">NOME:</label>
+                <select id="nome" name="nome" required>
+                    <option value="" disabled selected>Selecione seu nome</option>
+                    <option>ANA BEATRIZ DE BRITTO CERQUEIRA</option>
+                    <option>ANDRE SILVA BRAGA GONCALVES</option>
+                    <option>BRUNA FREITAS DA SILVA</option>
+                    <option>CAIO EDUARDO SILVA DE MORAES</option>
+                    <option>CAUE CAPDEVILA KLEIN</option>
+                    <option>DAFNE COSTA SANTANA</option>
+                    <option>DANIEL GONCALVES MOLINA</option>
+                    <option>ERICK THOMAS CONSOLO VALOSSI</option>
+                    <option>FLAVIA PALMA SOUZA</option>
+                    <option>GABRIEL FONSECA DA SILVA</option>
+                    <option>GIOVANNA DOS SANTOS PONTES</option>
+                    <option>GIOVANNA REGINA PEREIRA MACHADO</option>
+                    <option>GUILHERME LUCAS FONTOLAN DOS SANTOS</option>
+                    <option>GUSTAVO HENRIQUE PEREIRA</option>
+                    <option>ISABELA DE ARAUJO ANTONIO</option>
+                    <option>ISABELLEY DE PAULA NASCIMENTO</option>
+                    <option>JOAO VICTOR LIMA DE SOUSA</option>
+                    <option>JOÃO VICTOR OLIVEIRA SANTOS DE ALMEIDA</option>
+                    <option>JOAO VICTOR PAULINO DOS SANTOS</option>
+                    <option>JONAS ELIAQUIM CARVALHO BIELLA</option>
+                    <option>JULIA CRISTINI ASSUNCAO DA SILVA</option>
+                    <option>KAUAN COSTA DOS SANTOS</option>
+                    <option>LEANDRO HIROYUKI ROCHA TAGUTI</option>
+                    <option>LETICIA BORGES DE CASTRO</option>
+                    <option>MARCELA ALCANTARA DA SILVA</option>
+                    <option>MARIA EDUARDA RODRIGUES VILLELA DA SILVA</option>
+                    <option>MARIA EDUARDA SILVA FERNANDES</option>
+                    <option>MATHEUS ESTEVAM AGUIAR</option>
+                    <option>MICHAEL PETTER SOARES DE SOUSA</option>
+                    <option>MIGUEL VENANCIO DE BRITO</option>
+                    <option>MIRIA NOBERTO DOS SANTOS</option>
+                    <option>NICOLAS EMANUEL DE OLIVEIRA VILAR</option>
+                    <option>PEDRO HENRIQUE BESSA DOS SANTOS</option>
+                    <option>QUEZIA ZAINE ALVES DA SILVA RAMOS</option>
+                    <option>VITOR RODRIGUES DOS SANTOS ALVES</option>
+                    <option>WESDLEY SENA PAULO JUNIOR</option>
+                    <option>YAGO PEIXOTO RODRIGUES ORTEGA</option>
+                    <option>ALICE CRUZ BATISTA</option>
+                    <option>ARTHUR FERNANDO DA SILVA MAIRINK</option>
+                    <option>ARTHUR RODRIGUES WRONSKI</option>
+                    <option>CARLOS HENRIQUE SILVA SOUSA</option>
+                    <option>CRISTIAN FERNANDO DA SILVA</option>
+                    <option>DANIEL BARBOSA CORREIA</option>
+                    <option>ELISÂNGELA LUCIANO DA SILVA</option>
+                    <option>ELOIZA ALEXANDRE DOS SANTOS RODRIGUES</option>
+                    <option>EMANUEL VIEIRA DOS SANTOS</option>
+                    <option>EMILLY CRISTINA CARNEIRO</option>
+                    <option>GABRIEL ALMEIDA DA SILVA</option>
+                    <option>GABRIEL FERNANDES SILVEIRA</option>
+                    <option>JHENNIFER GOMES FRANCO</option>
+                    <option>JOAO GABRIEL SANTOS ESTEVES</option>
+                    <option>JOAO VICTOR BITO DOS SANTOS</option>
+                    <option>JOSE HENRIQUE BARCELLOS DA SILVA</option>
+                    <option>JULIA SILVA MAGALHAES</option>
+                    <option>KAIO HENRIQUE CONCEICAO SILVA</option>
+                    <option>KAIQUE DERICK MENDES DE CARVALHO</option>
+                    <option>LARYSSA MARTINS DE SOUZA</option>
+                    <option>LECIVAN ALEXANDRE MENEZES DA SILVA</option>
+                    <option>LUCAS MONTERO DE OLIVEIRA</option>
+                    <option>LUCAS OLIVEIRA DE SOUZA</option>
+                    <option>MAISHA MIKI ROCHA PEDRICO</option>
+                    <option>MARIA EDUARDA DOMICIANO GOMES</option>
+                    <option>MARIANA DA SILVA AZARIAS CANDIDO</option>
+                    <option>MARINA ELAILIA DOS SANTOS BEZERRA</option>
+                    <option>MATHEUS EDUARDO DOS SANTOS</option>
+                    <option>MIQUEIAS CRUZ DOS SANTOS</option>
+                    <option>NICOLLY SURIEL SANTOS</option>
+                    <option>RAFAELA ROCHA VIEIRA</option>
+                    <option>RAQUEL DE OLIVEIRA CARVALHO</option>
+                    <option>SAMUEL VINICIUS DOS SANTOS SILVA</option>
+                    <option>SARA QUERINO DE OLIVEIRA</option>
+                    <option>SOPHIA RODRIGUES AMORIM</option>
+                    <option>VICTOR EDUARDO OLIVEIRA DE ALMEIDA CARDOSO</option>
+                    <option>VINÍCIUS MONTEIRO DAS NEVES</option>
+                    <option>VITOR HUGO AMORIM PEREIRA</option>
+                    <option>YAGO MARTINS REBECHI</option>
+                    <option>YURI SILVA FIRMINO</option>
+                    <option>ANA CAROLINA DE SILVA RODRIGUES</option>
+                    <option>ANA LIVIA DE LIMA ABEL</option>
+                    <option>CAMILA ANDRADE VENANCIO</option>
+                    <option>DEBORAH VICTORIA PRADO DA CRUZ</option>
+                    <option>EMILY CAROLINE RODRIGUES LIMA</option>
+                    <option>EMILY SUENAGA ARAI</option>
+                    <option>EVANDRO RAMOS GONCALVES</option>
+                    <option>FELIPE BENÍCIO DOS SANTOS</option>
+                    <option>GABRIEL VERONEZE BRITO</option>
+                    <option>GABRIELLA LOPES NASCIMENTO</option>
+                    <option>GABRIELLE FERNANDES SAMPAIO</option>
+                    <option>ISADORA FLORES DE ALMEIDA</option>
+                    <option>JULIA DOS SANTOS SILVA</option>
+                    <option>JULIA LEANDRO DA SILVA ALMEIDA</option>
+                    <option>JULIA NERIS COSTA DE JESUS</option>
+                    <option>LAURA FEREZIN CHAVES</option>
+                    <option>LUCAS PAULO RODRIGUES DA SILVA</option>
+                    <option>LUCAS SALES CARNEIRO</option>
+                    <option>MARCOS VINICIUS MATOS OLIVEIRA</option>
+                    <option>MATEUS DIAS NEVES</option>
+                    <option>MAYTÊ DO CARMO BUENO</option>
+                    <option>NICHOLAS ALMEIDA COSTA</option>
+                    <option>NICOLE EDUARDA DE LIMA GAIA</option>
+                    <option>VICTORIA CRISTINA PEREIRA</option>
+                </select>
+            </div>
+            <div>
+                <label for="serie">SÉRIE:</label>
+                <select id="serie" name="serie" required>
+                    <option value="" disabled selected>Selecione a série</option>
+                    <option value="2ªSÉRIE A">2ªSÉRIE A</option>
+                    <option value="2ªSÉRIE B">2ªSÉRIE B</option>
+                    <option value="2ªSÉRIE C">2ªSÉRIE C</option>
+                    <option value="2° TÉCNICO">2° TÉCNICO</option>
+                </select>
+            </div>
+            <div>
+                <label for="data">DATA:</label>
+                <input type="date" id="data" name="data" required>
+            </div>
+        </div>
+
+        <!-- Questões -->
+        <div id="questoes-container"></div>
+
+        <!-- Botão de Envio -->
+        <button class="submit-button" onclick="enviarRespostas()">Enviar Respostas</button>
+
+        <!-- Container para exibir o feedback -->
+        <div id="feedback-container" class="feedback-container">
+            <h2>Feedback da Autocorreção</h2>
+            <div id="feedback-content"></div>
+        </div>
+    </div>
+
+    <script>
+        const questoes = [
+            {
+                tipo: 'aberta',
+                texto: `1. Uso de Compostos Orgânicos no Cotidiano
+Imagine que você vai ao supermercado e encontra produtos como alimentos, produtos de limpeza e cosméticos. Muitos deles são feitos com compostos orgânicos. Com base no que você sabe, como a química orgânica está presente nesses produtos? De que maneira isso influencia nossas escolhas de consumo no dia a dia?`
+            },
+            {
+                tipo: 'aberta',
+                texto: `2. Fermentação e Tradição Cultural
+Em diversas culturas, alimentos fermentados, como pães e iogurtes, fazem parte da dieta tradicional. Pense no impacto social e econômico desses produtos na vida moderna. Por que você acredita que a fermentação continua sendo importante hoje, mesmo com tantas tecnologias industriais disponíveis?`
+            },
+            {
+                tipo: 'aberta',
+                texto: `3. Biocombustíveis e o Futuro da Energia
+Com as mudanças climáticas, há uma busca por substituir combustíveis fósseis por biocombustíveis. Analise os benefícios e desafios de adotar biocombustíveis em larga escala. O que poderia incentivar ou dificultar essa mudança no Brasil e no mundo?`
+            },
+            {
+                tipo: 'aberta',
+                texto: `4. Emoções e Química no Dia a Dia
+Substâncias orgânicas, como a ocitocina, influenciam nosso humor e relacionamentos. Pense em como momentos simples, como abraçar alguém ou conviver com amigos, podem ser explicados também pela química. Como você acredita que o conhecimento sobre esses processos pode ser útil para a saúde emocional das pessoas?`
+            },
+            {
+                tipo: 'aberta',
+                texto: `5. Moda Sustentável e Impacto Ambiental
+Muitos tecidos usados na moda, como o poliéster, são produzidos a partir de compostos orgânicos derivados do petróleo. Sabendo que esses materiais demoram anos para se decompor, como você avalia a busca por materiais sustentáveis na moda? O que mais poderia ser feito para reduzir o impacto ambiental da indústria têxtil?`
+            },
+            {
+                tipo: 'aberta',
+                texto: `6. Tecnologia e Produtos Sustentáveis
+A química é usada na fabricação de eletrônicos, como celulares e laptops, mas também causa resíduos prejudiciais ao meio ambiente. Como você avalia o desafio de equilibrar o avanço tecnológico com a preservação ambiental? O que a sociedade e as indústrias poderiam fazer para diminuir o impacto dos resíduos eletrônicos?`
+            },
+            {
+                tipo: 'aberta',
+                texto: `7. Vacinas e Saúde Pública
+Durante a pandemia de COVID-19, vacinas produzidas com a ajuda da química salvaram vidas ao redor do mundo. No entanto, muitas pessoas hesitaram em tomar essas vacinas. Como você interpreta o papel da ciência na construção de confiança da população em momentos de crise? Que ações podem aproximar as pessoas do conhecimento científico?`
+            },
+            {
+                tipo: 'aberta',
+                texto: `8. Culinária e Ciência na Rotina
+Ao cozinhar, mudanças como o escurecimento do pão ou o derretimento do queijo são resultado de reações químicas. Sabendo disso, como a compreensão desses processos pode melhorar nossa alimentação e ajudar a desenvolver novos produtos alimentícios?`
+            },
+            {
+                tipo: 'aberta',
+                texto: `9. Produtos Naturais e Sintéticos: Prós e Contras
+Nos últimos anos, muitos consumidores preferem produtos naturais, como cosméticos e alimentos orgânicos, em vez de produtos sintéticos. Quais fatores você acredita que levam a essa preferência? Será que os produtos naturais são sempre mais seguros e eficazes?`
+            },
+            {
+                tipo: 'aberta',
+                texto: `10. Consumo Consciente e Inovação Química
+Plásticos e produtos industrializados fazem parte do nosso dia a dia, mas geram grande impacto ambiental. Como você avalia o papel da química na criação de alternativas mais sustentáveis? Que atitudes podemos adotar como consumidores para incentivar a inovação e diminuir o impacto ambiental?`
+            }
+        ];
+
+        const cronometros = {}; // Objeto para armazenar os cronômetros de cada questão
+        const tempos = {}; // Objeto para armazenar os tempos de cada questão
+
+        function iniciarCronometro(questaoId) {
+            if (!cronometros[questaoId]) {
+                tempos[questaoId] = 0; // Inicializa o tempo
+                const cronometro = document.getElementById(`cronometro-${questaoId}`);
+                
+                cronometros[questaoId] = setInterval(() => {
+                    tempos[questaoId]++;
+                    const minutos = Math.floor(tempos[questaoId] / 60);
+                    const segundos = tempos[questaoId] % 60;
+                    cronometro.textContent = `${minutos.toString().padStart(2, '0')}:${segundos.toString().padStart(2, '0')}`;
+                }, 1000);
+            }
+        }
+
+        function pararCronometro(questaoId) {
+            if (cronometros[questaoId]) {
+                clearInterval(cronometros[questaoId]);
+                cronometros[questaoId] = null;
+            }
+        }
+
+        function gerarQuestoes() {
+            const container = document.getElementById('questoes-container');
+            questoes.forEach((questao, index) => {
+                const questaoId = index + 1;
+
+                const questaoDiv = document.createElement('div');
+                questaoDiv.classList.add('questao');
+                questaoDiv.id = `questao-${questaoId}`;
+
+                // Header da Questão com Pergunta e Relógio
+                const questaoHeader = document.createElement('div');
+                questaoHeader.classList.add('questao-header');
+
+                // Pergunta
+                const pergunta = document.createElement('h3');
+                pergunta.textContent = questao.texto;
+                questaoHeader.appendChild(pergunta);
+
+                // Relógio
+                const relogio = document.createElement('div');
+                relogio.classList.add('relogio');
+                relogio.id = `cronometro-${questaoId}`;
+                relogio.textContent = "00:00";
+                questaoHeader.appendChild(relogio);
+
+                questaoDiv.appendChild(questaoHeader);
+
+                // Resposta
+                if (questao.tipo === 'aberta') {
+                    const resposta = document.createElement('textarea');
+                    resposta.id = `resposta-${questaoId}`;
+                    resposta.name = `resposta-${questaoId}`;
+                    resposta.placeholder = "Digite sua resposta aqui...";
+                    resposta.addEventListener('focus', () => iniciarCronometro(questaoId));
+                    resposta.addEventListener('blur', () => pararCronometro(questaoId));
+                    questaoDiv.appendChild(resposta);
+                }
+
+                // Adicionar linha separadora entre questões, exceto após a última
+                if (questaoId < questoes.length) {
+                    const linha = document.createElement('hr');
+                    linha.classList.add('linha-questao');
+                    questaoDiv.appendChild(linha);
+                }
+
+                container.appendChild(questaoDiv);
+            });
+        }
+
+        async function enviarRespostas() {
+            const nome = document.getElementById('nome').value;
+            const serie = document.getElementById('serie').value;
+            const data = document.getElementById('data').value;
+
+            if (!nome || !serie || !data) {
+                alert("Por favor, preencha todos os campos antes de enviar.");
+                return;
+            }
+
+            let respostas = {};
+            respostas['nome'] = nome;
+            respostas['serie'] = serie;
+            respostas['data'] = data;
+
+            const totalQuestoes = questoes.length; // Número total de questões
+            for (let i = 1; i <= totalQuestoes; i++) {
+                if (questoes[i - 1].tipo === 'aberta') {
+                    const resposta = document.getElementById(`resposta-${i}`).value;
+                    respostas[`resposta-${i}`] = resposta;
+                    respostas[`tempo-${i}`] = tempos[i] || 0; // Adiciona o tempo ou 0 se não houver
+                }
+            }
+
+            // Parar todos os cronômetros antes de enviar
+            for (let i = 1; i <= totalQuestoes; i++) {
+                pararCronometro(i);
+            }
+
+            try {
+                const response = await fetch('https://script.google.com/macros/s/AKfycbxvxd9KRsB-3UYJf0_DDLkklkCEQKi-7_mldnU7dlfyQJ8UsZbkTNKrQEvRpypsD-k/exec', { // Substitua 'SEU_SCRIPT_ID' pelo URL do seu Web App
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    body: new URLSearchParams(respostas)
+                });
+
+                // Verificar se a resposta é válida
+                const result = await response.json();
+
+                if (result.result === 'success') {
+                    // Limpar o formulário
+                    document.getElementById('nome').value = "";
+                    document.getElementById('serie').value = "";
+                    document.getElementById('data').value = "";
+                    for (let i = 1; i <= totalQuestoes; i++) {
+                        if (questoes[i - 1].tipo === 'aberta') {
+                            document.getElementById(`resposta-${i}`).value = "";
+                        }
+                        // Remover cronômetros
+                        const questaoDiv = document.getElementById(`questao-${i}`);
+                        const cronometro = document.getElementById(`cronometro-${i}`);
+                        if (cronometro) {
+                            questaoDiv.removeChild(cronometro);
+                        }
+                        // Recriar o cronômetro com tempo zerado
+                        const novoRelogio = document.createElement('div');
+                        novoRelogio.classList.add('relogio');
+                        novoRelogio.id = `cronometro-${i}`;
+                        novoRelogio.textContent = "00:00";
+                        questaoDiv.querySelector('.questao-header').appendChild(novoRelogio);
+                    }
+
+                    // Exibir pontuação e status de plágio
+                    const pontuacao = result.row[result.row.length - 1];
+                    const plagiado = result.row[result.row.length - 2];
+                    const feedback = result.feedback;
+
+                    // Construir feedback detalhado
+                    let feedbackHTML = `<p><strong>Pontuação Total:</strong> ${pontuacao} / 10</p>`;
+                    feedbackHTML += `<p><strong>Status de Plágio:</strong> ${plagiado}</p><hr>`;
+                    feedbackHTML += `<h4>Feedback Detalhado:</h4>`;
+
+                    for (let i = 1; i <= totalQuestoes; i++) {
+                        const tipo = questoes[i - 1].tipo;
+                        const status = feedback[i].corretas ? 'Correta' : 'Incorreta';
+                        const detalhes = feedback[i].feedback;
+                        const tempo = result.row[`tempo-${i}`] || 0;
+                        const minutos = Math.floor(tempo / 60);
+                        const segundos = tempo % 60;
+                        feedbackHTML += `
+                            <div class="feedback-questao ${feedback[i].corretas ? 'correct' : 'incorrect'}">
+                                <p><strong>Questão ${i} (${tipo === 'aberta' ? 'Aberta' : 'Múltipla Escolha'}):</strong> ${status}</p>
+                                <p>${detalhes}</p>
+                                <p><strong>Tempo Gasto:</strong> ${minutos.toString().padStart(2, '0')}:${segundos.toString().padStart(2, '0')}</p>
+                            </div>
+                        `;
+                    }
+
+                    // Exibir o feedback na página
+                    const feedbackContainer = document.getElementById('feedback-container');
+                    const feedbackContent = document.getElementById('feedback-content');
+                    feedbackContent.innerHTML = feedbackHTML;
+                    feedbackContainer.style.display = 'block';
+
+                    // Scroll para o feedback
+                    feedbackContainer.scrollIntoView({ behavior: 'smooth' });
+
+                } else {
+                    alert("Ocorreu um erro ao enviar as respostas: " + result.error);
+                }
+            } catch (error) {
+                console.error('Erro ao enviar respostas:', error);
+                alert("Ocorreu um erro ao enviar as respostas. Por favor, tente novamente.");
+            }
+        }
+
+        // Inicializa as questões ao carregar a página
+        window.onload = gerarQuestoes;
+    </script>
+
+</body>
+</html>
